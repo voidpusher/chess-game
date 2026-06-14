@@ -1,0 +1,4 @@
+*.py linguist-language=Python
+*.py linguist-detectable=true
+*.yml linguist-generated=false
+*.md text eol=lf

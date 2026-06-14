@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chess Arena</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── Top bar ─────────────────────────────────────────── -->
+    <header class="topbar">
+      <span class="logo">♟ Chess Arena</span>
+      <div class="topbar-actions">
+        <button id="btn-theme" class="icon-btn" title="Toggle theme">☀</button>
+        <button id="btn-flip"  class="icon-btn" title="Flip board">⇅</button>
+      </div>
+    </header>
+
+    <!-- ── Main layout ─────────────────────────────────────── -->
+    <main class="layout">
+
+      <!-- LEFT: controls panel -->
+      <aside class="panel panel-left">
+        <section class="card">
+          <h3>New Game</h3>
+
+          <label class="field-label">Play as</label>
+          <div class="toggle-group" id="color-pick">
+            <button class="toggle active" data-val="w">White</button>
+            <button class="toggle"        data-val="b">Black</button>
+          </div>
+
+          <label class="field-label">Opponent</label>
+          <div class="toggle-group" id="opp-pick">
+            <button class="toggle active" data-val="engine">Engine</button>
+            <button class="toggle samay-btn" data-val="samay">Samay ♟</button>
+          </div>
+
+          <div id="engine-opts">
+            <label class="field-label">Difficulty</label>
+            <div class="toggle-group" id="diff-pick">
+              <button class="toggle active" data-val="1">Easy</button>
+              <button class="toggle"        data-val="2">Medium</button>
+              <button class="toggle"        data-val="3">Hard</button>
+            </div>
+          </div>
+
+          <div id="samay-opts" class="hidden">
+            <label class="field-label">Samay Mode</label>
+            <div class="toggle-group" id="mode-pick">
+              <button class="toggle" data-val="casual">Casual</button>
+              <button class="toggle active" data-val="real">Real</button>
+              <button class="toggle" data-val="peak">Peak</button>
+            </div>
+            <p class="mode-desc" id="mode-desc">Authentic Samay — plays exactly like his rated games.</p>
+          </div>
+
+          <button id="btn-new" class="btn btn-primary full">Start Game</button>
+          <button id="btn-resign" class="btn btn-danger full">Resign</button>
+        </section>
+
+        <section class="card">
+          <h3>Position</h3>
+          <div id="eval-bar-wrap">
+            <div class="eval-label" id="eval-label-w">+0.0</div>
+            <div class="eval-track">
+              <div class="eval-fill" id="eval-fill"></div>
+            </div>
+            <div class="eval-label" id="eval-label-b">+0.0</div>
+          </div>
+          <p class="status-text" id="status-text">Make a move to begin.</p>
+        </section>
+      </aside>
+
+      <!-- CENTER: board -->
+      <div class="board-wrap">
+        <!-- Black player info -->
+        <div class="player-bar" id="player-bar-top">
+          <div class="player-avatar" id="avatar-top">♟</div>
+          <div class="player-info">
+            <span class="player-name" id="name-top">Engine</span>
+            <span class="material-adv" id="material-top"></span>
+          </div>
+          <div class="clock" id="clock-top">—</div>
+        </div>
+
+        <div class="board-frame">
+          <div id="board" class="board"></div>
+        </div>
+
+        <!-- Samay banter bubble -->
+        <div id="banter-wrap" class="banter-wrap hidden">
+          <div class="banter-bubble">
+            <span class="banter-avatar">🎙️</span>
+            <span id="banter-text"></span>
+          </div>
+        </div>
+
+        <!-- White player info -->
+        <div class="player-bar" id="player-bar-bottom">
+          <div class="player-avatar" id="avatar-bottom">♙</div>
+          <div class="player-info">
+            <span class="player-name" id="name-bottom">You</span>
+            <span class="material-adv" id="material-bottom"></span>
+          </div>
+          <div class="clock" id="clock-bottom">—</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: move list -->
+      <aside class="panel panel-right">
+        <section class="card move-list-card">
+          <h3>Moves</h3>
+          <div id="move-list" class="move-list"></div>
+        </section>
+      </aside>
+
+    </main>
+
+    <!-- Promotion dialog -->
+    <div id="promo-dialog" class="dialog hidden">
+      <div class="dialog-box">
+        <p>Promote to:</p>
+        <div class="promo-choices" id="promo-choices"></div>
+      </div>
+    </div>
+
+    <!-- Game-over overlay -->
+    <div id="gameover-overlay" class="overlay hidden">
+      <div class="overlay-box">
+        <div class="overlay-icon" id="overlay-icon">♟</div>
+        <h2 id="overlay-title">Game Over</h2>
+        <p  id="overlay-sub"></p>
+        <button id="overlay-new" class="btn btn-primary">Play Again</button>
+      </div>
+    </div>
+
+  </div><!-- #app -->
+
+  <script src="src/app.js"></script>
+</body>
+</html>

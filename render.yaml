@@ -1,0 +1,19 @@
+# Render Blueprint — deploy the Samay chess web app.
+# In the Render dashboard: New → Blueprint → connect this repo. Render reads
+# this file and provisions the service automatically. The free plan is enough;
+# no database add-on is needed because the clone ships as a committed artifact
+# (player_clones/data/samay_book.json.gz).
+services:
+  - type: web
+    name: samay-chess
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # One worker: the app holds the current game in memory, so a single shared
+    # process is required. Threads provide concurrency; the long timeout covers
+    # the engine's deepest (Peak / Hard) searches.
+    startCommand: gunicorn server:app --workers 1 --threads 8 --timeout 120 --bind 0.0.0.0:$PORT
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.5"

@@ -1,0 +1,11 @@
+[project]
+name = "chess-game-python"
+version = "0.1.0"
+description = "Python chess game with a tkinter GUI, chess engine, RAG-style opening knowledge, and post-game analysis."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+python_files = ["test_*.py"]
+addopts = "-q"
