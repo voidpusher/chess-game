@@ -8,8 +8,11 @@
 const API = "/api/game";
 
 // ── Piece glyphs ────────────────────────────────────────────────────────────
+// Use the SOLID glyphs for both colours; the white/black look comes from the
+// fill colour + outline in CSS. (The hollow glyphs ♔♕… render white-on-light as
+// near-invisible, which is why white pieces looked transparent.)
 const GLYPH = {
-  wK: "♔", wQ: "♕", wR: "♖", wB: "♗", wN: "♘", wP: "♙",
+  wK: "♚", wQ: "♛", wR: "♜", wB: "♝", wN: "♞", wP: "♟",
   bK: "♚", bQ: "♛", bR: "♜", bB: "♝", bN: "♞", bP: "♟",
 };
 

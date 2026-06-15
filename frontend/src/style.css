@@ -175,8 +175,8 @@ html, body { height: 100%; background: var(--bg); color: var(--text); font-famil
   transition: transform .08s;
   display: block;
 }
-.piece.white { color: #fff; -webkit-text-stroke: 1.5px #333; }
-.piece.black { color: #1a1a1a; -webkit-text-stroke: 1px #555; }
+.piece.white { color: #fafafa; -webkit-text-stroke: 1.6px #2b2b2b; }
+.piece.black { color: #2b2b2b; -webkit-text-stroke: 1.6px #0c0c0c; }
 
 /* drag ghost */
 .sq.dragging .piece { opacity: .4; }
